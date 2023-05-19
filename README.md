@@ -1,7 +1,7 @@
 Link to game: https://zaneshan.github.io/physicsgame/
 
-Code requirements:
-    * The game uses both continuous and discrete inputs from the player
+* Code requirements:
+    *  The game uses both continuous and discrete inputs from the player
 - Continous: movement of left to right
 - Discrete: Jumping
 
