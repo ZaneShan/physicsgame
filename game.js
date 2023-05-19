@@ -20,7 +20,7 @@ class intro extends Phaser.Scene {
         subtitle.setOrigin(0.5, 0.5);
         subtitle.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
     
-        const texts = ["Its escaped.", "You are the only survivor."];
+        const texts = ["Left and right arrowkeys to move", "Up arrowkey to jump"];
         const run = ["Run."];
         let currentIndex = -1;
     
@@ -109,21 +109,19 @@ class start extends Phaser.Scene {
     preload() {
         this.load.image('ground', 'assets/floor.png');
         this.load.image('player', 'assets/player.png');
-        this.load.image('obstacle', 'assets/obstacle.png');
-        this.load.image('monster', 'assets/block.png');
     }
     create() {
         this.cameras.main.setBackgroundColor('0x000000');
         //stat counter
         let playerscore = 0;
         //time counter.
-        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "5", {
+        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "3", {
             font: 'bold 300px Arial',
             fill: "#262626",
         });
 
         // Count down from 5 to 0
-        let count = 5;
+        let count = 3;
         const timer = this.time.addEvent({
             delay: 1000,
             callback: () => {
@@ -196,20 +194,18 @@ class start2 extends Phaser.Scene {
         this.load.image('ground', 'assets/floor.png');
         this.load.image('player', 'assets/player.png');
         this.load.image('obstacle', 'assets/obstacle.png');
-        this.load.image('monster', 'assets/block.png');
     }
     create() {
         this.cameras.main.setBackgroundColor('0x000000');
         //stat counter
         let playerscore = 0;
         //time counter.
-        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "5", {
+        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "10", {
             font: 'bold 300px Arial',
             fill: "#262626",
         });
 
-        // Count down from 5 to 0
-        let count = 5;
+        let count = 10;
         const timer = this.time.addEvent({
             delay: 1000,
             callback: () => {
@@ -257,7 +253,7 @@ class start2 extends Phaser.Scene {
         this.time.addEvent({
             delay: Phaser.Math.Between(1500, 2000), // Random delay 
             callback: () => {
-                const block = this.blocks.create(this.cameras.main.width, Phaser.Math.Between(100, 400), 'obstacle');
+                const block = this.blocks.create(this.cameras.main.width, Phaser.Math.Between(500, 1050), 'obstacle');
                 block.setVelocityX(-500);
             },
             loop: true,
@@ -303,20 +299,19 @@ class start3 extends Phaser.Scene {
         this.load.image('ground', 'assets/floor.png');
         this.load.image('player', 'assets/player.png');
         this.load.image('obstacle', 'assets/obstacle.png');
-        this.load.image('monster', 'assets/block.png');
     }
     create() {
         this.cameras.main.setBackgroundColor('0x000000');
         //stat counter
         let playerscore = 0;
         //time counter.
-        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "5", {
+        const counter = this.add.text(this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 400, "15", {
             font: 'bold 300px Arial',
             fill: "#262626",
         });
 
         // Count down from 5 to 0
-        let count = 5;
+        let count = 15;
         const timer = this.time.addEvent({
             delay: 1000,
             callback: () => {
@@ -364,7 +359,7 @@ class start3 extends Phaser.Scene {
         this.time.addEvent({
             delay: Phaser.Math.Between(1000, 2000), // Random delay 
             callback: () => {
-                const block = this.blocks.create(this.cameras.main.width, Phaser.Math.Between(500, 1000), 'obstacle');
+                const block = this.blocks.create(this.cameras.main.width, Phaser.Math.Between(500, 1050), 'obstacle');
                 block.setVelocityX(-700);
             },
             loop: true,
@@ -412,18 +407,18 @@ class sum extends Phaser.Scene {
         this.finalScore = data.score;
     }
     create() {
-        this.cameras.main.setBackgroundColor('#ffffff');
+        this.cameras.main.setBackgroundColor('#0x000000');
 
         const score = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, `Score: ${this.finalScore}`, {
             font: 'bold 100px Arial',
-            fill: 0xFFFFFF,
+            fill: '#262626',
         });
         score.setOrigin(0.5, 0.8);
         score.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 - 200);
 
-        const cont = this.add.text(0, 0, 'Continue', {
+        const cont = this.add.text(0, 0, 'Next Stage', {
             font: 'bold 50px Arial Black',
-            fill: 0xFFFFFF,
+            fill: '#262626',
         });
         cont.setOrigin(0.5, 1.0);
         cont.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
@@ -486,7 +481,7 @@ const game = new Phaser.Game({
             debug: false
         }
     },
-    scene: [start3, intro, start, start2, sum],
+    scene: [intro, start, start2, start3, sum, end],
     title: "Runner",
     background: "#00000",
 });
